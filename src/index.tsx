@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createServer } from 'miragejs';
+import { createServer } from 'miragejs'; //Construir uma api fake a partir do nosso front-end e utilizando a mensa rota localhost:3000
 import { App } from './App';
 
 const root = ReactDOM.createRoot(
