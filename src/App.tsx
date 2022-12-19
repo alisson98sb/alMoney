@@ -1,13 +1,31 @@
-import styled from 'styled-components'; //Vantagens de utilizar um styled-components. A nossa estilização fica dentro do escopo do componente que estamos utilizando, evitando sobreposição de estilos e usos de !important .Permite encadiamento, assim como o sass,
-import { Dashboard } from './components/Dashboard';
-import { Header } from './components/Header';
-import { GlobalStyle } from './styles/global';
+import { useState } from "react";
+import styled from "styled-components"; //Vantagens de utilizar um styled-components. A nossa estilização fica dentro do escopo do componente que estamos utilizando, evitando sobreposição de estilos e usos de !important .Permite encadiamento, assim como o sass,
+import { Dashboard } from "./components/Dashboard";
+import { Header } from "./components/Header";
+import { NewTransactionModal } from "./components/NewTransactionModal";
+import { GlobalStyle } from "./styles/global";
 
 export function App() {
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+
+  function handleOpenNewTransactionModal() {
+    setIsNewTransactionModalOpen(true);
+  }
+
+  function handleCloseNewTransactionModal() {
+    setIsNewTransactionModalOpen(false);
+  }
   return (
     <>
-      <Header />
+      <Header onOpenNewTransactionModal = {handleOpenNewTransactionModal}/>
+
       <Dashboard />
+
+        <NewTransactionModal 
+          isOpen={isNewTransactionModalOpen}
+          onHandleCloseNewTransactionModal={handleCloseNewTransactionModal} 
+          />
+
       <GlobalStyle />
     </>
   );
