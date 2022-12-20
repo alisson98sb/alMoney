@@ -13,7 +13,15 @@ createServer({
   },
   seeds(server){
     server.db.loadData({
-      transactions: []
+      transactions: [
+        {
+          id: 1,
+          title: 'Desenvolvimento',
+          type: 'deposit',
+          category: 'Salario',
+          amount: 3000,
+          createdAt: new Date()
+        }]
     })
   },
   routes() {

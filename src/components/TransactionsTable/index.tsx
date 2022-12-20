@@ -4,9 +4,8 @@ import { Container } from "./styles";
 
 export function TransactionTable() {
   const { transactions } = useTransactions();
-  console.log(transactions.length)
   return (
-    <Container hidden={transactions.length == 0}>
+    <Container>
       <table>
         <thead>
           <tr>
