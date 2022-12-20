@@ -7,6 +7,21 @@ import { useTransactions } from "../../hooks/useTransactions";
 export function Summary() {
 const { transactions } = useTransactions();
 
+const summary = transactions.reduce((acc, transaction) =>{
+  if(transaction.type === 'deposit') {
+    acc.deposits += transaction.amount
+    acc.total += transaction.amount
+  } else {
+    acc.withdraws += transaction.amount
+    acc.total -= transaction.amount
+  }
+  
+  return acc;
+}, {
+  deposits: 0,
+  withdraws: 0,
+  total: 0
+})
   return (
     <Container>
       <div>
@@ -18,7 +33,7 @@ const { transactions } = useTransactions();
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(1000)}
+          }).format(summary.deposits)}
         </strong>
       </div>
       <div>
@@ -31,7 +46,7 @@ const { transactions } = useTransactions();
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(500)}
+          }).format(summary.withdraws)}
         </strong>
       </div>
       <div className="highlight-background">
@@ -43,7 +58,7 @@ const { transactions } = useTransactions();
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
-          }).format(500)}
+          }).format(summary.total)}
         </strong>
       </div>
     </Container>

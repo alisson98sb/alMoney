@@ -7,7 +7,8 @@ import { GlobalStyle } from "./styles/global";
 import { TransactionsProvider } from "./hooks/useTransactions";
 
 export function App() {
-  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
+  const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] =
+    useState(false);
 
   function handleOpenNewTransactionModal() {
     setIsNewTransactionModalOpen(true);
@@ -18,14 +19,14 @@ export function App() {
   }
   return (
     <TransactionsProvider>
-      <Header onOpenNewTransactionModal = {handleOpenNewTransactionModal}/>
+      <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
 
       <Dashboard />
 
-        <NewTransactionModal 
-          isOpen={isNewTransactionModalOpen}
-          onRequestClose={handleCloseNewTransactionModal} 
-          />
+      <NewTransactionModal
+        isOpen={isNewTransactionModalOpen}
+        onRequestClose={handleCloseNewTransactionModal}
+      />
 
       <GlobalStyle />
     </TransactionsProvider>
