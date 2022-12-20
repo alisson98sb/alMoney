@@ -4,39 +4,45 @@ import { Container, RadioBox, TransactionTypeContainer } from "./styles";
 import closeImg from "../../assets/close.svg";
 import icomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
-import { FormEvent, useContext, useState } from "react";
-import { api } from "../../services/api";
-import { TransactionsContext } from "../../TransactionsContext";
+import { FormEvent, useState } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 
 interface NewTransactionModalProps {
-  onHandleCloseNewTransactionModal: () => void;
+  onRequestClose: () => void;
   isOpen: boolean;
 }
 
-export function NewTransactionModal({ onHandleCloseNewTransactionModal, isOpen }: NewTransactionModalProps) {
-  const { createTransaction } = useContext(TransactionsContext);
+export function NewTransactionModal({ onRequestClose, isOpen }: NewTransactionModalProps) {
+  const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
   const [type, setType] = useState("deposit");
   const [category, setCategory] = useState('');
 
-  function handleCreateNewTransaction(event: FormEvent){
+  async function handleCreateNewTransaction(event: FormEvent){
     event.preventDefault();
     
-    createTransaction({
+    await createTransaction({
       title,
       amount,
       type,
       category,
     })
+
+    setTitle('');
+    setAmount(0);
+    setType('deposit');
+    setCategory(''); 
+    
+    onRequestClose()
   }
   
 
   return (
     <ReactModal
       isOpen={isOpen}
-      onRequestClose={onHandleCloseNewTransactionModal}
+      onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
       ariaHideApp={false}
@@ -45,10 +51,10 @@ export function NewTransactionModal({ onHandleCloseNewTransactionModal, isOpen }
         src={closeImg}
         alt="Fechar modal"
         className="react-modal-close"
-        onClick={onHandleCloseNewTransactionModal}
+        onClick={onRequestClose}
       />
       <Container onSubmit={handleCreateNewTransaction}>
-        {/* <button onClick={onHandleCloseNewTransactionModal}>close</button> */}
+        {/* <button onClick={onRequestClose}>close</button> */}
         <h2>Cadastrar Transação</h2>
         <input 
           placeholder="Titulo" 
