@@ -13,15 +13,7 @@ createServer({
   },
   seeds(server){
     server.db.loadData({
-      transactions: [
-        {
-          id: 1,
-          title: 'Desenvolvimento',
-          type: 'deposit',
-          category: 'Salario',
-          amount: 3000,
-          createdAt: new Date()
-        }]
+      transactions: []
     })
   },
   routes() {
@@ -31,7 +23,7 @@ createServer({
       return this.schema.all('transaction')
     })
 
-    this.post('/transactions', (schema, request) => {
+    this.post('transactions', (schema, request) => {
       const data = JSON.parse(request.requestBody)
 
       return schema.create('transaction', data)

@@ -7,7 +7,7 @@ export function TransactionTable() {
   return (
     <Container>
       <table>
-        <thead>
+        <thead hidden={transactions.length == 0 ? true : false}>
           <tr>
             <th>Titulo</th>
             <th>Valor</th>
