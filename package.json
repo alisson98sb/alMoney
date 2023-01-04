@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^1.2.1",
     "miragejs": "^0.1.46",
+    "phosphor-react": "^1.4.1",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

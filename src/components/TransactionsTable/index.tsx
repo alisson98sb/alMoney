@@ -1,13 +1,14 @@
+import { CalendarBlank, TagSimple } from "phosphor-react";
 import { useTransactions } from "../../hooks/useTransactions";
-import { Container } from "./styles";
-
+import { dateFormatter } from "../../utils/formatter";
+import { CardTransaction, TransactionCardList, TransactionsContainer, TransactionsTable } from "./styles";
 
 export function TransactionTable() {
   const { transactions } = useTransactions();
   return (
-    <Container>
-      <table>
-        <thead hidden={transactions.length == 0 ? true : false}>
+    <TransactionsContainer>
+      <TransactionsTable>
+        <thead hidden={true}>
           <tr>
             <th>Titulo</th>
             <th>Valor</th>
@@ -37,7 +38,33 @@ export function TransactionTable() {
             );
           })}
         </tbody>
-      </table>
-    </Container>
+      </TransactionsTable>
+
+      <TransactionCardList>
+        {transactions.map((transaction) => (
+          <CardTransaction key={transaction.id}>
+            <header>
+              <span>{transaction.title}</span>
+              <span className={transaction.type}>
+                  {new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  }).format(transaction.amount)}
+                </span>
+            </header>
+            <footer>
+              <div>
+                <TagSimple size={16} />
+                {transaction.category}
+              </div>
+              <div>
+                <CalendarBlank size={16} />
+                {dateFormatter.format(new Date(transaction.createdAt))}
+              </div>
+            </footer>
+          </CardTransaction>
+        ))}
+      </TransactionCardList>
+    </TransactionsContainer>
   );
 }
