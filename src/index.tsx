@@ -16,7 +16,7 @@ createServer({
       transactions: [
         {
           id: 1,
-          title: 'Desenvolvimentooo',
+          title: 'Desenvolvimento',
           type: 'deposit',
           category: 'Salario',
           amount: 3000,
