@@ -22,6 +22,8 @@ const summary = transactions.reduce((acc, transaction) =>{
   withdraws: 0,
   total: 0
 })
+console.log(summary)
+
   return (
     <Container>
       <div>
@@ -41,8 +43,7 @@ const summary = transactions.reduce((acc, transaction) =>{
           <p>Saidas</p>
           <img src={outcomeImg} alt="Saidas" />
         </header>
-        <strong>
-          -
+        <strong className="saidas">
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",

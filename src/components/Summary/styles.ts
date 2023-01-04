@@ -25,6 +25,10 @@ export const Container = styled.div`
             font-weight: 500;
             line-height: 3rem;
         }
+    
+        .saidas {
+            color: var(--red);
+        }
 
         &.highlight-background {
             background-color: var(--green);
