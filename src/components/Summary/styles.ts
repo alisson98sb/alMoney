@@ -5,12 +5,14 @@ export const Container = styled.div`
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: -10rem;
+    min-width: 55rem;
 
     overflow-x: auto;
 
     div {
         background-color: var(--shape);
         padding: 1.5rem 2rem;
+        min-width: 17rem;
         border-radius: 0.25rem;
         color: var(--text-title);
 
