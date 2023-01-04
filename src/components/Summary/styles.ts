@@ -6,6 +6,8 @@ export const Container = styled.div`
     gap: 2rem;
     margin-top: -10rem;
 
+    overflow-x: auto;
+
     div {
         background-color: var(--shape);
         padding: 1.5rem 2rem;
