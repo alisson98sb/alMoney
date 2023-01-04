@@ -21,6 +21,46 @@ createServer({
           category: 'Salario',
           amount: 3000,
           createdAt: new Date()
+        },
+        {
+          id: 2,
+          title: 'Freelance',
+          type: 'deposit',
+          category: 'Salario',
+          amount: 1500,
+          createdAt: new Date()
+        },
+        {
+          id: 3,
+          title: 'Aluguel',
+          type: 'withdraw',
+          category: 'Casa',
+          amount: 1000,
+          createdAt: new Date()
+        },
+        {
+          id: 4,
+          title: 'Mercado',
+          type: 'withdraw',
+          category: 'Casa',
+          amount: 500,
+          createdAt: new Date()
+        },
+        {
+          id: 5,
+          title: 'Trabalho fixo',
+          type: 'deposit',
+          category: 'Salario',
+          amount: 5000,
+          createdAt: new Date()
+        },
+        {
+          id: 6,
+          title: 'Agua e Luz',
+          type: 'withdraw',
+          category: 'Casa',
+          amount: 200,
+          createdAt: new Date()
         }]
     })
   },
@@ -38,7 +78,6 @@ createServer({
     })
   }
 })
-
 
 root.render(
   <React.StrictMode>

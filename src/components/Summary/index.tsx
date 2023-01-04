@@ -50,7 +50,7 @@ console.log(summary)
           }).format(summary.withdraws)}
         </strong>
       </div>
-      <div className="highlight-background">
+      <div className={summary.total > 0 ? 'highlight-background-green' : 'highlight-background-red'}>
         <header>
           <p>Total</p>
           <img src={totalImg} alt="Total" />

@@ -23,6 +23,7 @@ export const Container = styled.div`
 
         strong {
             display: block;
+            inline-size: max-content;
             margin-top: 1rem;
             font-size: 2rem;
             font-weight: 500;
@@ -33,8 +34,12 @@ export const Container = styled.div`
             color: var(--red);
         }
 
-        &.highlight-background {
+        &.highlight-background-green {
             background-color: var(--green);
+            color: #FFF;
+        }
+        &.highlight-background-red {
+            background-color: var(--red);
             color: #FFF;
         }
     }
