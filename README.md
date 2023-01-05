@@ -28,6 +28,7 @@ Projeto Web desenvolvido durante o Ignite by Rocketseat • Trilha ReactJS - TEM
 
 ### Desktop (screenshot):
 <img src="https://github.com/jfernandesdev/dt-money-2/blob/dc7fe73c37a5a802b1d2795b94618ec6150a25e3/public/layout/desktop-1.png" />
+<img src="./src/assets/Desktop.png" />
 
 
 ### Mobile (screenshot):
