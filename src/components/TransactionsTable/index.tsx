@@ -2,9 +2,17 @@ import { CalendarBlank, TagSimple } from "phosphor-react";
 import { useTransactions } from "../../hooks/useTransactions";
 import { dateFormatter } from "../../utils/formatter";
 import { CardTransaction, TransactionCardList, TransactionsContainer, TransactionsTable } from "./styles";
+import { FaTrashAlt } from 'react-icons/fa';
+import { IconContext } from "react-icons";
 
 export function TransactionTable() {
-  const { transactions } = useTransactions();
+  const { transactions, removeTransaction } = useTransactions();
+
+  function handleDelete(id: number){
+    const confirm = window.confirm("Esta ação não poderá ser desfeita, tem certeza que gostaria de excluir a transação?")
+
+    confirm && removeTransaction(id)
+  }
   return (
     <TransactionsContainer>
       <TransactionsTable>
@@ -33,6 +41,13 @@ export function TransactionTable() {
                   {new Intl.DateTimeFormat("pt-BR").format(
                     new Date(transaction.createdAt)
                   )}
+                </td>
+                <td>
+                <IconContext.Provider value={{ className: 'FaTrashAlt' }} >
+                  <button onClick={() => handleDelete(transaction.id)} className="FaTrashAlt-Button">
+                    <FaTrashAlt  />
+                  </button>
+                </IconContext.Provider>
                 </td>
               </tr>
             );

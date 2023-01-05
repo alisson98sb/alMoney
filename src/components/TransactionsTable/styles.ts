@@ -41,6 +41,19 @@ export const TransactionsTable = styled.table`
     &.withdraw {
       color: var(--red);
     }
+
+    .FaTrashAlt {
+      color: var(--red);
+
+      &:hover {
+        color: #971d32;
+      }
+    }
+
+    .FaTrashAlt-Button {
+      border: none;
+      background: none;
+    }
   }
 @media (max-width: 769px) {
     display: none;

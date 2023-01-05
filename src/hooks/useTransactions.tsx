@@ -17,6 +17,7 @@ interface TransactionsProviderProps {
 interface TransactionsContextData {
   transactions: Transaction[];
   createTransaction: (transaction: TransactionInput) => Promise<void>;
+  removeTransaction: (id: number) => Promise<void>;
 }
 
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
@@ -42,8 +43,15 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     setTransaction([...transactions, transaction])
   }
 
+
+async function removeTransaction(id: number) {
+  const TansactionsFiltered = transactions.filter((transaction) => transaction.id !== id);
+  setTransaction(TansactionsFiltered);
+}
+
+
   return (
-    <TransactionsContext.Provider value={{transactions, createTransaction}}>
+    <TransactionsContext.Provider value={{transactions, createTransaction, removeTransaction}}>
       {children}
     </TransactionsContext.Provider>
   );

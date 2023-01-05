@@ -22,7 +22,6 @@ const summary = transactions.reduce((acc, transaction) =>{
   withdraws: 0,
   total: 0
 })
-console.log(summary)
 
   return (
     <Container>
