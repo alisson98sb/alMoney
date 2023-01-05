@@ -39,5 +39,3 @@ Projeto Web desenvolvido durante o Ignite by Rocketseat • Trilha ReactJS - TEM
 https://al-money.vercel.app/
 
 <br>
-
-<img src="https://i.ibb.co/n1SbQZw/w-signature.png" alt="w-signature" border="0" width='300px' />
