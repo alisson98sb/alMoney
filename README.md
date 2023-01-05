@@ -10,6 +10,7 @@ Projeto Web desenvolvido durante o Ignite by Rocketseat • Trilha ReactJS - TEM
 
 ### Adicionais:
 - [x] Layout responsivo (mobile e desktop).
+- [x] Remover transação.
 
 
 ## Tecnologias utilizadas: 🚀

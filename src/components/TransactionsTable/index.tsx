@@ -1,17 +1,23 @@
 import { CalendarBlank, TagSimple } from "phosphor-react";
 import { useTransactions } from "../../hooks/useTransactions";
 import { dateFormatter } from "../../utils/formatter";
-import { CardTransaction, TransactionCardList, TransactionsContainer, TransactionsTable } from "./styles";
-import { FaTrashAlt } from 'react-icons/fa';
+import {
+  CardTransaction,
+  TransactionCardList,
+  TransactionsContainer,
+  TransactionsTable,
+} from "./styles";
+import { FaTrashAlt } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 export function TransactionTable() {
   const { transactions, removeTransaction } = useTransactions();
 
-  function handleDelete(id: number){
-    const confirm = window.confirm("Esta ação não poderá ser desfeita, tem certeza que gostaria de excluir a transação?")
-
-    confirm && removeTransaction(id)
+  function handleDelete(id: number) {
+    const confirm = window.confirm(
+      "Esta ação não poderá ser desfeita, tem certeza que gostaria de excluir a transação?"
+    );
+    confirm && removeTransaction(id);
   }
   return (
     <TransactionsContainer>
@@ -43,11 +49,14 @@ export function TransactionTable() {
                   )}
                 </td>
                 <td>
-                <IconContext.Provider value={{ className: 'FaTrashAlt' }} >
-                  <button onClick={() => handleDelete(transaction.id)} className="FaTrashAlt-Button">
-                    <FaTrashAlt  />
-                  </button>
-                </IconContext.Provider>
+                  <IconContext.Provider value={{ className: "FaTrashAlt" }}>
+                    <button
+                      onClick={() => handleDelete(transaction.id)}
+                      className="FaTrashAlt-Button"
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </IconContext.Provider>
                 </td>
               </tr>
             );
@@ -59,13 +68,28 @@ export function TransactionTable() {
         {transactions.map((transaction) => (
           <CardTransaction key={transaction.id}>
             <header>
-              <span>{transaction.title}</span>
-              <span className={transaction.type}>
-                  {new Intl.NumberFormat("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  }).format(transaction.amount)}
-                </span>
+              <div className="transaction-header">
+                <div className="transaction-header-title">
+                  <span>{transaction.title}</span>
+                  <span className={transaction.type}>
+                    {new Intl.NumberFormat("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    }).format(transaction.amount)}
+                  </span>
+                </div>
+
+                <div className="transaction-delete">
+                  <IconContext.Provider value={{ className: "FaTrashAlt" }}>
+                    <button
+                      onClick={() => handleDelete(transaction.id)}
+                      className="FaTrashAlt-Button"
+                    >
+                      <FaTrashAlt />
+                    </button>
+                  </IconContext.Provider>
+                </div>
+              </div>
             </header>
             <footer>
               <div>

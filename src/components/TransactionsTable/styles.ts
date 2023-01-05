@@ -85,6 +85,30 @@ export const CardTransaction = styled.div`
     flex-direction: column;
     gap: 0.25rem;
     color: ${(props) => props.theme['gray-300']};
+
+    .transaction-header {
+      display: flex;
+      justify-content: space-between;
+
+      .transaction-header-title {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .FaTrashAlt {
+      color: var(--red);
+
+      &:hover {
+        color: #971d32;
+      }
+    }
+
+    .FaTrashAlt-Button {
+      border: none;
+      background: none;
+    }
+
+    }
   }
 
     .deposit {
