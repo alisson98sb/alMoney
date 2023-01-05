@@ -31,7 +31,7 @@ Projeto Web desenvolvido durante o Ignite by Rocketseat • Trilha ReactJS - TEM
 
 
 ### Mobile (screenshot):
-<img src="./src/assets/Mobile.png" />
+<img src="./src/assets/Mobile.jpeg" />
 
 
 ### Dê uma olhada como o projeto ficou!
