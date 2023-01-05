@@ -10,14 +10,25 @@ import {
 import { FaTrashAlt } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
+interface Transaction {
+  id: number;
+  title: string;
+  amount: number;
+  type: string;
+  category: string;
+  createdAt: string;
+}
+
 export function TransactionTable() {
   const { transactions, removeTransaction } = useTransactions();
 
-  function handleDelete(id: number) {
+  function handleDelete(transaction: Transaction) {
     const confirm = window.confirm(
-      "Esta ação não poderá ser desfeita, tem certeza que gostaria de excluir a transação?"
+      `Esta ação não poderá ser desfeita!
+    Tem certeza que deseja excluir
+    a transação "${transaction.title}"?`
     );
-    confirm && removeTransaction(id);
+    confirm && removeTransaction(transaction.id);
   }
   return (
     <TransactionsContainer>
@@ -51,7 +62,7 @@ export function TransactionTable() {
                 <td>
                   <IconContext.Provider value={{ className: "FaTrashAlt" }}>
                     <button
-                      onClick={() => handleDelete(transaction.id)}
+                      onClick={() => handleDelete(transaction)}
                       className="FaTrashAlt-Button"
                     >
                       <FaTrashAlt />
@@ -82,7 +93,7 @@ export function TransactionTable() {
                 <div className="transaction-delete">
                   <IconContext.Provider value={{ className: "FaTrashAlt" }}>
                     <button
-                      onClick={() => handleDelete(transaction.id)}
+                      onClick={() => handleDelete(transaction)}
                       className="FaTrashAlt-Button"
                     >
                       <FaTrashAlt />
