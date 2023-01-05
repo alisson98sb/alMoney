@@ -6,7 +6,6 @@ Projeto Web desenvolvido durante o Ignite by Rocketseat • Trilha ReactJS - TEM
 
 - [x] Listagem das transações (entradas e saídas);
 - [x] Cálculo das entradas, saídas e total;
-- [x] Campo de busca;
 - [x] Modal para cadastro de nova transação;
 
 ### Adicionais:
